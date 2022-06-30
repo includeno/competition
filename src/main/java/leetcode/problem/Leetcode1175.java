@@ -1,5 +1,6 @@
 package leetcode.problem;
 
+//https://leetcode.cn/problems/prime-arrangements/
 public class Leetcode1175 {
 
     public static int MOD = (int)1e9+7;
