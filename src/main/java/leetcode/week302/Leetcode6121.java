@@ -1,5 +1,6 @@
 package leetcode.week302;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.math.BigInteger;
 
@@ -8,17 +9,18 @@ public class Leetcode6121 {
     public static void main(String[] args) {
         String[] nums=new String[]{"102","473","251","814"};
         int[][] queries=new int[][]{{1,1}, {2,3},{4,2},{1,2}};
-        smallestTrimmedNumbers(nums,queries);
+        int[] res=smallestTrimmedNumbers(nums,queries);
+        System.out.println(Arrays.toString(res));
     }
 
     public static int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {
         int[] res=new int[queries.length];
         PriorityQueue<Entry> priorityQueue=new PriorityQueue<>((a,b)->{
             if(a.value.compareTo(b.value)<0){
-                return 1;
+                return -1;
             }
             else if(a.value.compareTo(b.value)>0){
-                return -1;
+                return 1;
             }
             else if(a.index< (b).index){
                 return -1;
@@ -37,7 +39,7 @@ public class Leetcode6121 {
             while (k>0){
                 Entry entry = priorityQueue.poll();
                 temp=entry.index;
-                System.out.println("k:"+k+" =>"+entry.value+" ~"+entry.index);
+                //System.out.println("k:"+k+" =>"+entry.value+" ~"+entry.index);
                 k--;
             }
             res[i]=temp;
